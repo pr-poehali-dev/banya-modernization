@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -8,7 +8,15 @@ import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('ВЫСШИЙ ЖЕНСКИЙ РАЗРЯД');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,22 +37,22 @@ const Index = () => {
     { 
       title: 'ПАРЕНИЕ', 
       description: 'Профессиональные парильщики с вениками',
-      image: 'https://cdn.poehali.dev/files/98a162f0-ab89-47cf-9df0-8a8803387a98.jpg'
+      image: 'https://cdn.poehali.dev/files/a566198c-531a-4888-8e63-5c4656efec00.jpg'
     },
     { 
       title: 'ПОМЫВКИ', 
       description: 'Традиционные банные процедуры',
-      image: 'https://cdn.poehali.dev/files/98a162f0-ab89-47cf-9df0-8a8803387a98.jpg'
+      image: 'https://cdn.poehali.dev/files/95f38590-b578-431e-bcaf-4b7463ad4dbb.jpg'
     },
     { 
       title: 'СВЕЖИЙ ПАР', 
       description: 'Свежий пар каждый час',
-      image: 'https://cdn.poehali.dev/files/5a7dba94-95f4-44f7-abf6-9c494d0b73dc.jpg'
+      image: 'https://cdn.poehali.dev/files/6099acf1-4166-4861-93e9-d1c3d81e1280.jpg'
     },
     { 
-      title: 'ПРОФЕССИОНАЛЬНЫЙ МАССАЖ', 
-      description: 'Релаксация и восстановление',
-      image: 'https://cdn.poehali.dev/files/98a162f0-ab89-47cf-9df0-8a8803387a98.jpg'
+      title: 'БАННЫЕ ПРИНАДЛЕЖНОСТИ', 
+      description: 'Всё необходимое для комфортного отдыха',
+      image: 'https://cdn.poehali.dev/files/6f5a856c-ad4e-4999-a3f8-3c97f475b229.jpg'
     },
   ];
 
@@ -70,8 +78,27 @@ const Index = () => {
     setFormData({ name: '', phone: '', date: '', message: '' });
   };
 
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+        <div className="text-center animate-fade-in">
+          <img 
+            src="https://cdn.poehali.dev/files/e38958ee-82fc-4b8a-99c3-b95713e2c179.jpg" 
+            alt="Мытищинские Бани" 
+            className="w-96 h-auto mb-8 mx-auto rounded-2xl shadow-2xl"
+          />
+          <div className="flex justify-center gap-2">
+            <div className="w-3 h-3 bg-olive rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+            <div className="w-3 h-3 bg-olive rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+            <div className="w-3 h-3 bg-olive rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-beige">
+    <div className="min-h-screen bg-beige animate-fade-in">
       <header className="fixed top-0 left-0 right-0 z-50 bg-beige/95 backdrop-blur-sm border-b border-brown/10">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -89,7 +116,7 @@ const Index = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
-              backgroundImage: `linear-gradient(rgba(107, 114, 86, 0.4), rgba(88, 79, 61, 0.6)), url('https://cdn.poehali.dev/files/f51ddcbc-a398-48ac-bddb-575eeafb9758.jpg')`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://cdn.poehali.dev/files/a566198c-531a-4888-8e63-5c4656efec00.jpg')`,
             }}
           />
           <div className="relative z-10 text-center text-white px-4 max-w-4xl animate-fade-in">
@@ -283,8 +310,8 @@ const Index = () => {
             </Card>
             <div className="relative rounded-2xl overflow-hidden h-64">
               <img 
-                src="https://cdn.poehali.dev/files/18c99668-e2a6-44b0-95da-36135422a7b2.jpg" 
-                alt="Гости" 
+                src="https://cdn.poehali.dev/files/e38958ee-82fc-4b8a-99c3-b95713e2c179.jpg" 
+                alt="Стойка ресепшн" 
                 className="w-full h-full object-cover"
               />
             </div>
