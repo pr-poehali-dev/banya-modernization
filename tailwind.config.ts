@@ -6,7 +6,7 @@ export default {
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -61,12 +61,26 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				beige: '#E8DCC8',
+				olive: '#6B7256',
+				brown: '#584F3D',
+				terra: '#C85A3E',
+			},
+			fontFamily: {
+				heading: ['Cormorant', 'serif'],
+				body: ['Open Sans', 'sans-serif'],
+				accent: ['Caveat', 'cursive'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				heading: ['Cormorant', 'serif'],
+				body: ['Open Sans', 'sans-serif'],
+				accent: ['Caveat', 'cursive'],
 			},
 			keyframes: {
 				'accordion-down': {
